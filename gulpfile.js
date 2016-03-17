@@ -21,6 +21,12 @@ var cssdir     = 'css/';
 
 var project    = 'YasBstrap';
 
+// "html" = Copy HTML files
+gulp.task('_html', function() {
+    return  gulp.src(source + '*.html')
+        .pipe(gulp.dest(build));
+});
+
 // "_vendor_js" = Concatenate JS vendor files to dist
 gulp.task('_vendor_js', function() {
     return gulp.src(vendordir + dist + jsdir + '*.js')
