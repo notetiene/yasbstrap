@@ -49,5 +49,17 @@ StickyNavbar.prototype.check = function(paddingTop) {
  * Update the distance from top for the navbar. used when the user resize the window.
  * @method
  */
+StickyNavbar.prototype.updateDistance = function() {
+    // If the element is fixed, the normal flow has changed and the navbar offset is not longer valid
+    if(this.sticked) {
+        // Use the parent offset instead (isn’t fixed)
+        var parentOffset = this.navbar.parent().offset().top;
+        // Find the static position by removing the body padding
+        this.distance = parentOffset - this.paddingTop;
+    } else {
+        this.distance = this.navbar.offset().top;
+    }
+    this.check();
+};
 
 /* sticky_navbar.js ends here */
