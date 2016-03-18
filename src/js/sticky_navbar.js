@@ -27,6 +27,23 @@ var StickyNavbar = function(sel, paddingTop) {
  * @method
  * @param {String} [paddingTop=this.paddingTop] - Padding added to the body when the navbar quit the normal flow.
  */
+StickyNavbar.prototype.check = function(paddingTop) {
+
+    var isLowerNavbar = this.$window.scrolltop() >= this.distance;
+
+    if(isLowerNavbar && !this.sticked) {
+        // console.log('lower than navbar: ' + this.$window.scrollTop());
+        this.navbar.addclass('navbar-fixed-top');
+        $('body').css('padding-top', paddingTop || this.paddingTop);
+        this.sticked = true;
+    }
+    if(!isLowerNavbar && this.sticked) {
+        // console.log('Higher than navbar: ' + this.$window.scrollTop());
+        this.navbar.removeClass('navbar-fixed-top');
+        $('body').css('padding-top', '0px');
+        this.sticked = false;
+    }
+};
 
 /**
  * Update the distance from top for the navbar. used when the user resize the window.
