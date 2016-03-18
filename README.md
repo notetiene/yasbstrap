@@ -1,2 +1,2 @@
 # yasbstrap
-## Yet Another Somebody Bootstrap
+### Yet Another Somebody Bootstrap
