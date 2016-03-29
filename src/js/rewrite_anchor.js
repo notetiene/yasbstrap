@@ -1,7 +1,7 @@
 /* rewrite_anchor.js --- Change the URL when "activate.bs.scrollspy" is fired.
 
  Commentary:
-
+   Change document.location URL when a scrollspy ID is reached. It should be used in conjunction with StickyNavbar since the clearing anchor is placed just after the navbar.
  Code:
  */
 
