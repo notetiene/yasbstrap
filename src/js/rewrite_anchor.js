@@ -52,7 +52,21 @@ var anchorListener = function(removeHash) {
  * @param {String} topAnchor - Anchor used to clear the URL.
  * @param {bool} removeHash - If it should remove the ID hash in URL.
  */
+anchorListener.prototype.fired = function(event, el, topAnchor, removeHash) {
+    var anchor = el.relatedTarget;
 
+    if(anchor === '#' + topAnchor) {
+        // Remove anchor from URL
+        window.history.pushState(null, null, './');
+        // Quit since the job is done!
+        return;
+    }
+    if(removeHash) {
+        anchor = anchor.substr(1);
+    }
+
+    window.history.pushState(null, null, anchor);
+};
 
 /**
  * Adds the void container for clearing the URL after the {@linkcode .navbar component}.
