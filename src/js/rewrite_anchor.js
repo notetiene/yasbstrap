@@ -10,7 +10,7 @@
  * @listens activate.bs.scrollspy
  * @param {bool} removeHash - Hash won't be used for the anchor location.
  */
-var anchorListener = function(removeHash) {
+var AnchorListener = function(removeHash) {
     /**
      * Removes ID hashes.
      * @private
@@ -52,7 +52,7 @@ var anchorListener = function(removeHash) {
  * @param {String} topAnchor - Anchor used to clear the URL.
  * @param {bool} removeHash - If it should remove the ID hash in URL.
  */
-anchorListener.prototype.fired = function(event, el, topAnchor, removeHash) {
+AnchorListener.prototype.fired = function(event, el, topAnchor, removeHash) {
     var anchor = el.relatedTarget;
 
     if(anchor === '#' + topAnchor) {
@@ -71,7 +71,7 @@ anchorListener.prototype.fired = function(event, el, topAnchor, removeHash) {
 /**
  * Adds the void container for clearing the URL after the {@linkcode .navbar component}.
  */
-anchorListener.prototype._makeClearAnchor = function() {
+AnchorListener.prototype._makeClearAnchor = function() {
     var body = $('body');
 
     // To my knowlege, body can only contain data-target for scroll-spy
