@@ -17,7 +17,7 @@ var StickyNavbar = function(sel, paddingTop) {
     this.sticked = false;
     this.distance = this.navbar.offset().top;
     this.paddingTop = paddingTop || this.navbar.innerHeight();
-    this.$window = $(window)[0];
+    this.$window = $(window);
 
     this.check();
 };
