@@ -71,5 +71,14 @@ anchorListener.prototype.fired = function(event, el, topAnchor, removeHash) {
 /**
  * Adds the void container for clearing the URL after the {@linkcode .navbar component}.
  */
+anchorListener.prototype._makeClearAnchor = function() {
+    var body = $('body');
+
+    // To my knowlege, body can only contain data-target for scroll-spy
+    var target = body.attr('data-target');
+
+    $(target).after(this._voidContainer);
+    $(target + ' .nav').append(this._voidItem);
+};
 
 /*  rewrite_anchor.js */
