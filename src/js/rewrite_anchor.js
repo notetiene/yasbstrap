@@ -10,6 +10,39 @@
  * @listens activate.bs.scrollspy
  * @param {bool} removeHash - Hash won't be used for the anchor location.
  */
+var anchorListener = function(removeHash) {
+    /**
+     * Removes ID hashes.
+     * @private
+     */
+    this._removeHash   = removeHash || true;
+    /**
+     * Anchor used to remove any ID to the URL.
+     * @private
+     */
+    this._topAnchor     = 'ysbstop';
+    /**
+     * Container for the clearing anchor. It clears the URL when reached.
+     * @private
+     */
+    this._voidContainer = '<div id="' + this._topAnchor + '" style="height: 1px"></div>';
+    /**
+     * Hidden .nav-item to register a scrollspy ID. Needed for being complient to Bootstrap default behavior.
+     * @private
+     */
+    this._voidItem      = '<li class="nav-item"><a class="nav-link" href="#' + this._topAnchor +
+        '" class="nav-link" style="display: none"></a>';
+
+    this._makeClearAnchor();
+
+    // Since there’s a nested function context, store member variables locally
+    var fn        = this.fired,
+        topAnchor = this._topAnchor;
+
+    $(window).on('activate.bs.scrollspy', function(event, el) {
+        fn(event, el, topAnchor, removeHash);
+    });
+};
 
 
 /**
