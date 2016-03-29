@@ -29,7 +29,7 @@ var StickyNavbar = function(sel, paddingTop) {
  */
 StickyNavbar.prototype.check = function(paddingTop) {
 
-    var isLowerNavbar = this.$window.scrolltop() >= this.distance;
+    var isLowerNavbar = this.$window.scrollTop() >= this.distance;
 
     if(isLowerNavbar && !this.sticked) {
         // console.log('lower than navbar: ' + this.$window.scrollTop());
