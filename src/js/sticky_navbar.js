@@ -33,7 +33,7 @@ StickyNavbar.prototype.check = function(paddingTop) {
 
     if(isLowerNavbar && !this.sticked) {
         // console.log('lower than navbar: ' + this.$window.scrollTop());
-        this.navbar.addclass('navbar-fixed-top');
+        this.navbar.addClass('navbar-fixed-top');
         $('body').css('padding-top', paddingTop || this.paddingTop);
         this.sticked = true;
     }
