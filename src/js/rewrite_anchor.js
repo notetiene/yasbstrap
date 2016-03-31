@@ -15,22 +15,22 @@ var AnchorListener = function(removeHash) {
      * Removes ID hashes.
      * @private
      */
-    this._removeHash   = removeHash || true;
+    this._removeHash  = removeHash || true;
     /**
      * Anchor used to remove any ID to the URL.
      * @private
      */
-    this._topAnchor     = 'ysbstop';
+    this._topAnchor   = 'ysbstop';
     /**
      * Container for the clearing anchor. It clears the URL when reached.
      * @private
      */
-    this._voidContainer = '<div id="' + this._topAnchor + '" style="height: 1px"></div>';
+    this.topReference = '<div id="' + this._topAnchor + '" style="height: 1px"></div>';
     /**
      * Hidden .nav-item to register a scrollspy ID. Needed for being complient to Bootstrap default behavior.
      * @private
      */
-    this._voidItem      = '<li class="nav-item"><a class="nav-link" href="#' + this._topAnchor +
+    this._voidNavItem    = '<li class="nav-item"><a class="nav-link" href="#' + this._topAnchor +
         '" class="nav-link" style="display: none"></a>';
 
     this._makeClearAnchor();
@@ -43,7 +43,6 @@ var AnchorListener = function(removeHash) {
         fn(event, el, topAnchor, removeHash);
     });
 };
-
 
 /**
  * Event handler for {}
@@ -77,8 +76,8 @@ AnchorListener.prototype._makeClearAnchor = function() {
     // To my knowlege, body can only contain data-target for scroll-spy
     var target = body.attr('data-target');
 
-    $(target).after(this._voidContainer);
-    $(target + ' .nav').append(this._voidItem);
+    $(target).after(this.topReference);
+    $(target + ' .nav').append(this._voidNavItem);
 };
 
 /*  rewrite_anchor.js */
